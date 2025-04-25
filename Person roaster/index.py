@@ -132,10 +132,7 @@ if(dataCollected == True):
             TotalImagesEnglish = ["Barack Obama", "Bill Gates", "Cristiano Ronaldo", "Donald Trump", "Elon Musk", "Jeff Bezos", "Joe Biden", "Lionel Messi", "Neymar Jr"]
     randomnum = math.floor(random.random() * len(TotalImages))
     Name = TotalImages[randomnum]
-    if(Joke[0]["language"] == "Hindi"):
-            NameLan = TotalImagesHindi[randomnum]
-    else:
-            NameLan = TotalImagesEnglish[randomnum]
+    NameLan = TotalImagesEnglish[randomnum]
         # console.log(randomnum)
         # console.log(Name,NameLan)
         # // Use the received data to update the image
@@ -146,10 +143,7 @@ if(dataCollected == True):
 
     introsentence = Joke[0]["intro_sentence"]
     introsentencearray = introsentence.split(" ")
-    if(Joke[0]["language"] == "English"):
-     introsentencearray[0] = "One day " + NameLan
-    else:
-     introsentencearray[0] = "एक दिन " + NameLan
+    introsentencearray[0] = "One day " + NameLan
     introsentencenew = " ".join(introsentencearray)  # Corrected join syntax
 
     Joke[0]["intro_sentence"] = introsentencenew
@@ -168,7 +162,6 @@ if(dataCollected == True):
         words[index] = random.choice(replacement_words)  # Replace with a random word
         return " ".join(words)  # Convert back to string
 
-# Example usage
     Joke[0]["roast_dialogue"] = replace_buddy(Joke[0]["roast_dialogue"])
     with open('Joke_data.json', 'w') as json_file:
        json.dump(Joke, json_file)
