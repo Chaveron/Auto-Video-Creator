@@ -6,6 +6,7 @@ This code as 3 main folders. 1 generates a video in which a random person is roa
 2) There is also some commented code in each file. Please dont un-comment them or it will cause errors.
 3) This code works by making an AI model ; Copilot in this case about the specific format for the videos.
 
+
 Person Roaster
 {
   "language": "English",
@@ -19,6 +20,7 @@ Person Roaster
 Give this format to the AI model
 NOTE:
 In the above format. I used someone in intro_sentence as a fixed word because it will replaced by a random person present in the code and the word Buddy will be replaced any 1 one of the funny words present in the code.
+
 
 Funny Conversation format
 [
@@ -35,6 +37,7 @@ Funny Conversation format
 ]
 You can even tell the AI to give more dialogues to 1 character.
 This format should be given to the AI model and you should even tell him about all the emojis you use and about the characters.
+
 
 Facts Video format
 [
@@ -70,6 +73,7 @@ Example of this
     "A hopeful scene of humans and animals collaborating to protect nature, with elephants, wolves, and bees actively contributing to conservation efforts."
   ]
 ]
+
 
 
 
