@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            /* padding: 10px; */
+            color: white;
+            /* background-color: black; */
+        }
+
+        .screen {
+            background-color: black;
+            width: 297px;
+            height: 627px;
+            margin: 30px auto;
+            border-left: 20px solid black;
+            border-right: 20px solid black;
+        }
+
+        .heading {
+            background-color: black;
+            width: 297px;
+            height: 104.5px;
+            overflow: visible;
+            font-size: 14px;
+        }
+
+        .main {
+            background-color: white;
+            width: 297px;
+            height: 297px;
+            display: grid;
+            place-items: center;
+            /* Center the images perfectly */
+            border-radius: 20%;
+            overflow: hidden;
+        }
+
+        .main img {
+            grid-column: 1 / -1;
+            /* Ensures both images occupy the same space */
+            grid-row: 1 / -1;
+            /* Stacks them directly on top of each other */
+            width: 100%;
+            /* Adjust based on your needs */
+        }
+
+        .footer {
+            height: 225.5px;
+            width: 297px;
+        }
+
+        .first {
+            height: 111px;
+            width: 297px;
+            /* font-size: 35px; */
+            background-color: black;
+            /* padding: 0 10px; */
+            /* overflow: visible; */
+        }
+
+        #text {
+            height: 112.75px;
+            width: 297px;
+            font-size: 30px;
+        }
+
+        #image {
+            z-index: 1;
+        }
+
+        #Ender {
+            position: absolute;
+            background-color: rgb(0, 0, 100);
+            height: 5px;
+            width: 5px;
+            bottom: 40px;
+            /* left: 700px; */
+        }
+
+        #images {
+            filter: saturate(50%);
+            z-index: 0;
+            /* position: absolute */
+        }
+
+        #face {
+            background-color: yellow;
+            border-radius: 90px;
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+        }
+
+        .eyes {
+            background-color: white;
+            border-radius: 90px;
+            width: 20px;
+            height: 20px;
+            margin: 0px 50px;
+            display: inline-block;
+            position: absolute;
+            bottom: 130px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #eye1 {
+            left: 680px;
+        }
+
+        #eye2 {
+            left: 715px;
+        }
+
+        .eyeball {
+            background-color: black;
+            height: 10px;
+            width: 10px;
+            border-radius: 90px;
+        }
+
+        #footer {
+            margin-top: 30px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            font-size: 50px;
+            background-color: red;
+            /* Initial color */
+        }
+
+        #myCanvas {
+            position: absolute;
+            left: 605px;
+            bottom: -30px;
+            /* Initial position */
+            transform: rotateZ(45deg);
+            /* Initial rotation */
+            transform: rotateZ(225deg);
+            bottom: -70px;
+        }
+
+        #footer.subscribed {
+            background-color: grey;
+        }
+
+        #myCanvas.rotated {
+            bottom: -30px;
+            /* Initial position */
+            transform: rotateZ(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="300" height="300"></canvas>
+    <div class="screen">
+        <div class="heading">
+            <!-- <h1 id="heading">Lionel Messi went to a rocket science seminar</h1> -->
+        </div>
+        <div class="main">
+            <img src="" height="297px" width="297px" alt="" id="image">
+            <img src="Images/Image1.jpeg" height="297px" id="images">
+        </div>
+        <div class="footer">
+            <div id="text">
+                <div id="footer">Subscribe</div>
+                <div id="face">
+                    <div class="eyes" id="eye1">
+                        <div class="eyeball"></div>
+                    </div>
+                    <div class="eyes" id="eye2">
+                        <div class="eyeball"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- <h1 class="first">Wait For The End!! 😂 😂 😂</h1> -->
+            <div id="Ender"></div>
+        </div>
+    </div>
+    <!-- <script src="test.js"></script> -->
+    <script>
+        function drawArc() {
+            // Get the canvas element
+            const canvas = document.getElementById("myCanvas");
+
+            if (!canvas) {
+                console.error("Canvas element not found.");
+                return;
+            }
+
+            // Get the canvas context
+            const ctx = canvas.getContext("2d");
+
+            if (!ctx) {
+                console.error("Failed to get canvas context.");
+                return;
+            }
+
+            // Define arc parameters
+            const centerX = 150; // X-coordinate of the center
+            const centerY = 150; // Y-coordinate of the center
+            const radius = 30;  // Radius of the arc
+            const startAngle = 0; // Start angle in radians (0 degrees)
+            const endAngle = Math.PI / 2; // End angle in radians (60 degrees)
+
+            // Draw the arc
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+            ctx.strokeStyle = "blue"; // Set stroke color
+            ctx.lineWidth = 3;        // Set line width
+            ctx.stroke();
+
+            console.log("Arc drawn successfully.");
+        }
+
+        // Call the function to draw the arc
+        drawArc();
+        let footer = document.getElementById('footer');
+        let canvas = document.getElementById('myCanvas');
+        let animationState = false;
+
+        // Function to change state
+        function changeState() {
+            if (animationState) {
+                footer.classList.remove('subscribed');
+                canvas.classList.remove('rotated');
+                footer.textContent = 'Subscribe';
+            } else {
+                footer.classList.add('subscribed');
+                canvas.classList.add('rotated');
+                footer.textContent = 'Subscribed';
+            }
+            animationState = !animationState;
+        }
+
+        // Call changeState every 2.5 seconds
+        setInterval(changeState, 2500);
+
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
